@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Application\UseCases\GetCompany;
+namespace App\Application\UseCases\DeleteCompany;
 
 use App\Domain\Entity\Company;
 use App\infra\Repository\database\CompanyRepositoryDatabase;
 use Doctrine\ORM\EntityManagerInterface;
 
-class GetCompanyUseCase
+class DeleteCompanyUseCase
 {
     private $entityManager;
 
@@ -22,9 +22,7 @@ class GetCompanyUseCase
     public function execute($input)
     {
         $company = $this->companyRepository->findById($input);
-        return [
-            'id' => $company->getId(),
-            'name' => $company->getName(),
-        ];
+        $companys = $this->companyRepository->delete($company);
+        return [];
     }
 }

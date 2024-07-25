@@ -5,7 +5,7 @@
 return [
     'create_company' => [[], ['_controller' => ['App\\infra\\Controller\\CompanyController', 'post']], [], [['text', '/api/company']], [], [], []],
     'get_all_companies' => [[], ['_controller' => ['App\\infra\\Controller\\CompanyController', 'getAll']], [], [['text', '/api/company']], [], [], []],
-    'get_company' => [['id'], ['_controller' => ['App\\infra\\Controller\\CompanyController', 'get']], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/api/company']], [], [], []],
-    'update_company' => [['id'], ['_controller' => ['App\\infra\\Controller\\CompanyController', 'put']], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/api/company']], [], [], []],
-    'delete_company' => [['id'], ['_controller' => ['App\\infra\\Controller\\CompanyController', 'delete']], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/api/company']], [], [], []],
+    'get_company' => [['id'], ['_controller' => ['App\\infra\\Controller\\CompanyController', 'get']], ['id' => '[a-fA-F0-9\\-]{36}'], [['variable', '/', '[a-fA-F0-9\\-]{36}', 'id', true], ['text', '/api/company']], [], [], []],
+    'update_company' => [['id'], ['_controller' => ['App\\infra\\Controller\\CompanyController', 'put']], ['id' => '[a-fA-F0-9\\-]{36}'], [['variable', '/', '[a-fA-F0-9\\-]{36}', 'id', true], ['text', '/api/company']], [], [], []],
+    'delete_company' => [['id'], ['_controller' => ['App\\infra\\Controller\\CompanyController', 'delete']], ['id' => '[a-fA-F0-9\\-]{36}'], [['variable', '/', '[a-fA-F0-9\\-]{36}', 'id', true], ['text', '/api/company']], [], [], []],
 ];

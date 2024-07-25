@@ -15,13 +15,13 @@ return [
     ],
     [ // $regexpList
         0 => '{^(?'
-                .'|/api/company/(\\d+)(?'
-                    .'|(*:28)'
+                .'|/api/company/([a-fA-F0-9\\-]{36})(?'
+                    .'|(*:42)'
                 .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
-        28 => [
+        42 => [
             [['_route' => 'get_company', '_controller' => ['App\\infra\\Controller\\CompanyController', 'get']], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'update_company', '_controller' => ['App\\infra\\Controller\\CompanyController', 'put']], ['id'], ['PUT' => 0], null, false, true, null],
             [['_route' => 'delete_company', '_controller' => ['App\\infra\\Controller\\CompanyController', 'delete']], ['id'], ['DELETE' => 0], null, false, true, null],

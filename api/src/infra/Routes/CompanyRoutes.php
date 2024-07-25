@@ -29,16 +29,16 @@ class CompanyRoutes
         $this->routes->add('get_company', '/api/company/{id}')
             ->controller([$this->companyController, 'get'])
             ->methods(['GET'])
-            ->requirements(['id' => '\d+']);
+            ->requirements(['id' => '[a-fA-F0-9\-]{36}']);
 
         $this->routes->add('update_company', '/api/company/{id}')
             ->controller([$this->companyController, 'put'])
             ->methods(['PUT'])
-            ->requirements(['id' => '\d+']);
+            ->requirements(['id' => '[a-fA-F0-9\-]{36}']);
 
         $this->routes->add('delete_company', '/api/company/{id}')
             ->controller([$this->companyController, 'delete'])
             ->methods(['DELETE'])
-            ->requirements(['id' => '\d+']);
+            ->requirements(['id' => '[a-fA-F0-9\-]{36}']);
     }
 }
