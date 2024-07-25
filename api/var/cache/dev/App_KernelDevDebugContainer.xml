@@ -173,6 +173,17 @@
       <argument type="service" id="doctrine"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
+    <service id="App\infra\Controller\AssociateController" class="App\infra\Controller\AssociateController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="App\infra\Repository\database\CompanyRepositoryDatabase"/>
+      <argument type="service" id="App\infra\Repository\database\AssociateRepositoryDatabase"/>
+    </service>
+    <service id="App\infra\Repository\database\AssociateRepositoryDatabase" class="App\infra\Repository\database\AssociateRepositoryDatabase" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+    </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
       <tag priority="100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">controller.argument_value_resolver</tag>
@@ -1647,7 +1658,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.gej4APV"/>
+      <argument type="service" id=".service_locator.9XqfqMj"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -2285,6 +2296,8 @@
     </service>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\infra\Repository\database\CompanyRepositoryDatabase" class="App\infra\Repository\database\CompanyRepositoryDatabase" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\infra\Repository\database\CompanyRepositoryDatabase" class="App\infra\Repository\database\CompanyRepositoryDatabase" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\infra\Repository\database\AssociateRepositoryDatabase" class="App\infra\Repository\database\AssociateRepositoryDatabase" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\infra\Repository\database\AssociateRepositoryDatabase" class="App\infra\Repository\database\AssociateRepositoryDatabase" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.w7.f4fT" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -2781,9 +2794,10 @@
         <argument key="doctrine.orm.listeners.pdo_session_handler_schema_listener" type="service_closure" id="doctrine.orm.listeners.pdo_session_handler_schema_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.gej4APV" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.9XqfqMj" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\infra\Repository\database\AssociateRepositoryDatabase" type="service_closure" id="App\infra\Repository\database\AssociateRepositoryDatabase"/>
         <argument key="App\infra\Repository\database\CompanyRepositoryDatabase" type="service_closure" id="App\infra\Repository\database\CompanyRepositoryDatabase"/>
       </argument>
     </service>
@@ -2903,6 +2917,7 @@
         <argument type="collection">
           <argument>App\Kernel</argument>
           <argument>App\infra\Controller\CompanyController</argument>
+          <argument>App\infra\Controller\AssociateController</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>
       </call>
@@ -3643,6 +3658,7 @@
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
     <service id=".service_locator.sWM0iPT" alias=".service_locator.2JZTdhn"/>
     <service id=".service_locator.LMuqDDe" alias=".service_locator.VHsrTPK"/>
+    <service id=".service_locator.2BrbcX5" alias=".service_locator.9XqfqMj"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
     <service id="controller_resolver" alias="debug.controller_resolver"/>
     <service id="argument_resolver" alias="debug.argument_resolver"/>

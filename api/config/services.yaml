@@ -22,5 +22,16 @@ services:
         tags:
             - { name: 'doctrine.repository_service' }
 
+    App\infra\Controller\AssociateController:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+        tags: ['controller.service_arguments']    
+
+    App\infra\Repository\database\AssociateRepositoryDatabase:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+        tags:
+            - { name: 'doctrine.repository_service' }
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

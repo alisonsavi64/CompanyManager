@@ -8,4 +8,9 @@ return [
     'get_company' => [['id'], ['_controller' => ['App\\infra\\Controller\\CompanyController', 'get']], ['id' => '[a-fA-F0-9\\-]{36}'], [['variable', '/', '[a-fA-F0-9\\-]{36}', 'id', true], ['text', '/api/company']], [], [], []],
     'update_company' => [['id'], ['_controller' => ['App\\infra\\Controller\\CompanyController', 'put']], ['id' => '[a-fA-F0-9\\-]{36}'], [['variable', '/', '[a-fA-F0-9\\-]{36}', 'id', true], ['text', '/api/company']], [], [], []],
     'delete_company' => [['id'], ['_controller' => ['App\\infra\\Controller\\CompanyController', 'delete']], ['id' => '[a-fA-F0-9\\-]{36}'], [['variable', '/', '[a-fA-F0-9\\-]{36}', 'id', true], ['text', '/api/company']], [], [], []],
+    'create_associate' => [[], ['_controller' => ['App\\infra\\Controller\\AssociateController', 'post']], [], [['text', '/api/associate']], [], [], []],
+    'get_all_associates' => [[], ['_controller' => ['App\\infra\\Controller\\AssociateController', 'getAll']], [], [['text', '/api/associate']], [], [], []],
+    'get_associate' => [['id'], ['_controller' => ['App\\infra\\Controller\\AssociateController', 'get']], ['id' => '[a-fA-F0-9\\-]{36}'], [['variable', '/', '[a-fA-F0-9\\-]{36}', 'id', true], ['text', '/api/associate']], [], [], []],
+    'update_associate' => [['id'], ['_controller' => ['App\\infra\\Controller\\AssociateController', 'put']], ['id' => '[a-fA-F0-9\\-]{36}'], [['variable', '/', '[a-fA-F0-9\\-]{36}', 'id', true], ['text', '/api/associate']], [], [], []],
+    'delete_associate' => [['id'], ['_controller' => ['App\\infra\\Controller\\AssociateController', 'delete']], ['id' => '[a-fA-F0-9\\-]{36}'], [['variable', '/', '[a-fA-F0-9\\-]{36}', 'id', true], ['text', '/api/associate']], [], [], []],
 ];

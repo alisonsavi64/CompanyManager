@@ -3,8 +3,10 @@
 namespace App\infra\Controller;
 
 use App\Application\UseCases\CreateCompany\CreateCompanyUseCase;
+use App\Application\UseCases\DeleteCompany\DeleteCompanyUseCase;
 use App\Application\UseCases\GetCompanys\GetCompanysUseCase;
 use App\Application\UseCases\GetCompany\GetCompanyUseCase;
+use App\Application\UseCases\UpdateCompany\UpdateCompanyUseCase;
 use App\infra\Repository\database\CompanyRepositoryDatabase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,8 +32,8 @@ class CompanyController
 
     public function getAll(Request $request)
     {
-        $getCompanyUseCase = new GetCompanysUseCase($this->entityManager, $this->companyRepository);
-        return new Response(json_encode($getCompanyUseCase->execute(json_decode($request->getContent()))), 200, ['Content-Type' => 'application/json']);
+        $getAllCompanyUseCase = new GetCompanysUseCase($this->entityManager, $this->companyRepository);
+        return new Response(json_encode($getAllCompanyUseCase->execute(json_decode($request->getContent()))), 200, ['Content-Type' => 'application/json']);
     }
 
     public function get(Request $request)
@@ -40,15 +42,15 @@ class CompanyController
         return new Response(json_encode($getCompanyUseCase->execute($request->attributes->get('id'))), 200, ['Content-Type' => 'application/json']);
     }
 
-    public function update(Request $request)
+    public function put(Request $request)
     {
-        $getCompanyUseCase = new GetCompanyUseCase($this->entityManager, $this->companyRepository);
-        return new Response(json_encode($getCompanyUseCase->execute($request->attributes->get('id'))), 200, ['Content-Type' => 'application/json']);
+        $updateCompanyUseCase = new UpdateCompanyUseCase($this->entityManager, $this->companyRepository);
+        return new Response(json_encode($updateCompanyUseCase->execute(['id' => $request->attributes->get('id'), 'data' => json_decode($request->getContent())])), 200, ['Content-Type' => 'application/json']);
     }
 
     public function delete(Request $request)
     {
-        $getCompanyUseCase = new GetCompanyUseCase($this->entityManager, $this->companyRepository);
-        return new Response(json_encode($getCompanyUseCase->execute($request->attributes->get('id'))), 200, ['Content-Type' => 'application/json']);
+        $deleteCompanyUseCase = new DeleteCompanyUseCase($this->entityManager, $this->companyRepository);
+        return new Response(json_encode($deleteCompanyUseCase->execute($request->attributes->get('id'))), 200, ['Content-Type' => 'application/json']);
     }
 }
