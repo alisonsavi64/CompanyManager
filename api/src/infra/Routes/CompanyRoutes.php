@@ -1,13 +1,44 @@
 <?php
+
+namespace App\infra\Routes;
+
+use App\infra\Controller\CompanyController;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
-return function (RoutingConfigurator $routes): void {
-    $routes->add('api_post_show', '/api/posts/{id}')
-        ->controller([BlogApiController::class, 'show'])
-        ->methods(['GET', 'HEAD'])
-    ;
-    $routes->add('api_post_edit', '/api/posts/{id}')
-        ->controller([BlogApiController::class, 'edit'])
-        ->methods(['PUT'])
-    ;
-};
+class CompanyRoutes
+{
+    private $routes;
+    private $companyController;
+
+    public function __construct(RoutingConfigurator $routes, string $companyController)
+    {
+        $this->routes = $routes;
+        $this->companyController = $companyController;
+    }
+
+    public function init()
+    {
+        $this->routes->add('create_company', '/api/company')
+            ->controller([$this->companyController, 'post'])
+            ->methods(['POST']);
+
+        $this->routes->add('get_all_companies', '/api/company')
+            ->controller([$this->companyController, 'getAll'])
+            ->methods(['GET']);
+
+        $this->routes->add('get_company', '/api/company/{id}')
+            ->controller([$this->companyController, 'get'])
+            ->methods(['GET'])
+            ->requirements(['id' => '\d+']);
+
+        $this->routes->add('update_company', '/api/company/{id}')
+            ->controller([$this->companyController, 'put'])
+            ->methods(['PUT'])
+            ->requirements(['id' => '\d+']);
+
+        $this->routes->add('delete_company', '/api/company/{id}')
+            ->controller([$this->companyController, 'delete'])
+            ->methods(['DELETE'])
+            ->requirements(['id' => '\d+']);
+    }
+}

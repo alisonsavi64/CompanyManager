@@ -8,15 +8,23 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
+        '/api/company' => [
+            [['_route' => 'create_company', '_controller' => ['App\\infra\\Controller\\CompanyController', 'post']], null, ['POST' => 0], null, false, false, null],
+            [['_route' => 'get_all_companies', '_controller' => ['App\\infra\\Controller\\CompanyController', 'getAll']], null, ['GET' => 0], null, false, false, null],
+        ],
     ],
     [ // $regexpList
         0 => '{^(?'
-                .'|/_error/(\\d+)(?:\\.([^/]++))?(*:35)'
+                .'|/api/company/(\\d+)(?'
+                    .'|(*:28)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
-        35 => [
-            [['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null],
+        28 => [
+            [['_route' => 'get_company', '_controller' => ['App\\infra\\Controller\\CompanyController', 'get']], ['id'], ['GET' => 0], null, false, true, null],
+            [['_route' => 'update_company', '_controller' => ['App\\infra\\Controller\\CompanyController', 'put']], ['id'], ['PUT' => 0], null, false, true, null],
+            [['_route' => 'delete_company', '_controller' => ['App\\infra\\Controller\\CompanyController', 'delete']], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],
