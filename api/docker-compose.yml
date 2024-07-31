@@ -28,4 +28,4 @@ services:
       POSTGRES_USER: "vox"
       POSTGRES_PASSWORD: "vox"
     ports:
-      - "5433:5432"
+      - "5434:5432"
