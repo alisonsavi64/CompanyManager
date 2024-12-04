@@ -1,5 +1,4 @@
-# Vox-Teste
-
+# Company Manager
 Este projeto fornece uma API simples para gerenciar empresas e seus associados. A API é construída usando Symfony e Docker, e suporta operações CRUD básicas.
 
 ## Como Executar
