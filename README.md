@@ -1,5 +1,5 @@
 # Company Manager
-Este projeto fornece uma API simples para gerenciar empresas e seus associados. A API é construída usando Symfony e Docker, e suporta operações CRUD básicas.
+Desenvolvi este projeto para fins de estudo. Trata-se de uma API simples que gerencia empresas e seus associados. Usei Symfony e Docker para construir a aplicação, implementando operações CRUD básicas. Foi uma ótima oportunidade para colocar em prática metodologias como DDD e TDD enquanto estudava o framework Symfony e aprofundava meus conhecimentos.
 
 ## Como Executar
 
